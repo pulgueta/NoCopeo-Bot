@@ -48,7 +48,7 @@ async def info(ctx):
     embed.add_field(name="Creador", value=ctx.guild.owner, inline=True)
     embed.add_field(name="Invitación", value=os.getenv("DISCORD_INVITE"), inline=False)
     embed.set_thumbnail(url="https://firebasestorage.googleapis.com/v0/b/anny-kaktus.appspot.com/o/Screenshot_1.png?alt=media&token=d5b07119-c816-4cb7-9989-a08fbee28fef")
-    embed.add_field(name="Acerca de", value="Servidor creado en 2016 por SrTakashi y Kevin el gordilli. Actualmente con +100 miembros y originario de Barrancabermeja, Colombia.", inline=True)
+    embed.add_field(name="Acerca de", value="Servidor creado en 2019 por SrTakashi y Kevin el gordilli. Actualmente con +100 miembros y originario de Barrancabermeja, Colombia.", inline=True)
     embed.add_field(name="Miembros actuales:", value=ctx.guild.member_count, inline=False)
     embed.add_field(name="Creado el:", value=ctx.guild.created_at, inline=False)
     embed.add_field(name="ID del servidor:", value=ctx.guild.id, inline=False)
