@@ -13,9 +13,8 @@ load_dotenv(find_dotenv())
 ncp_bot = commands.Bot(command_prefix="ncp>", description="Bot oficial de NoCopeo Gang", intents=discord.Intents.all())
 
 @ncp_bot.event
-async def on_ready(ctx):
+async def on_ready():
     await ncp_bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Bombardeo a la casa de Yanfri"))
-    await ctx.send("YA LLEGUÉ, QUÉ ES LO QUE HAY PA' DAÑAR")
     print("Bot listo")
 
 @ncp_bot.event
