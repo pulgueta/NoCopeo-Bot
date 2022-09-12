@@ -14,7 +14,7 @@ ncp_bot = commands.Bot(command_prefix="ncp>", description="Bot oficial de NoCope
 
 @ncp_bot.event
 async def on_ready():
-    await ncp_bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Bombardeo a la casa de Yanfri"), status=discord.Status.online, afk=False)
+    await ncp_bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Bombardeo a la casa de Yanfri"), status=discord.Status.online)
 
     print("Bot listo")
 
