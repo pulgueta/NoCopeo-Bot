@@ -56,7 +56,7 @@ async def info(ctx):
     await ctx.send(embed=embed)
 
 @ncp_bot.command()
-async def youtube(ctx, *, search):
+async def yt(ctx, *, search):
     results_base = "https://www.youtube.com/results?"
     q = parse.urlencode({"search_query": search})
     content = request.urlopen(results_base + q)
@@ -64,10 +64,6 @@ async def youtube(ctx, *, search):
     results = re.findall('watch\?v=(.{11})', content.read().decode('utf-8'))
     result_URL = "https://www.youtube.com/watch?v=" + results[0]
 
-
-    embed = discord.Embed(title="Resultados de la búsqueda", description="Resultados de la búsqueda en YouTube", color=discord.Color.red())
-
-    embed.add_field(name="Primer resultado", value=result_URL, inline=False)
-    await ctx.send(embed=embed)
+    await ctx.send("Resultado de la búsqueda: " + result_URL)
     
 ncp_bot.run(os.getenv("DISCORD_TOKEN"))
