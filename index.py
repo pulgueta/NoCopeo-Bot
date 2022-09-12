@@ -30,10 +30,10 @@ async def ayuda(ctx):
     embed = discord.Embed(title="Comandos", description="Lista de comandos disponibles", color=discord.Color.yellow())
 
     embed.set_thumbnail(url="https://firebasestorage.googleapis.com/v0/b/anny-kaktus.appspot.com/o/icon%20(1).png?alt=media&token=b8d993c4-7d20-4445-934a-97346b5de12b")
-    embed.add_field(name="Todos los comandos van con el prefijo ncp>", value="---------------", inline=True)
+    embed.add_field(name="Todos los comandos van con el prefijo ncp>", value="-----------------------------------------", inline=True)
     embed.add_field(name="ayuda", value="Muestra los comandos disponibles", inline=False)
     embed.add_field(name="info", value="Muestra información sobre el bot y el servidor", inline=False)
-    embed.add_field(name="youtube", value="Busca un video en YouTube, se enviará el primer resultado --EN DESARROLLO--", inline=False)
+    embed.add_field(name="youtube", value="Busca un video en YouTube, se enviará el primer resultado", inline=False)
     embed.set_footer(text="Cualquier duda comunicarse/pingear a pulgueta_#2810")
 
     await ctx.send(embed=embed)
@@ -57,12 +57,17 @@ async def info(ctx):
 
 @ncp_bot.command()
 async def youtube(ctx, *, search):
-    base = "https://www.youtube.com/results?"
+    results_base = "https://www.youtube.com/results?"
     q = parse.urlencode({"search_query": search})
-    content = request.urlopen(base + q)
+    content = request.urlopen(results_base + q)
 
-    results = re.findall('href=\"\\/watch\\?v=(.{11})', content.read().decode())
-    print(results[0])
-    # await ctx.send("http://www.youtube.com/watch?v=" + search_results[0])
+    results = re.findall('watch\?v=(.{11})', content.read().decode('utf-8'))
+    result_URL = "https://www.youtube.com/watch?v=" + results[0]
+
+
+    embed = discord.Embed(title="Resultados de la búsqueda", description="Resultados de la búsqueda en YouTube", color=discord.Color.red())
+
+    embed.add_field(name="Primer resultado", value=result_URL, inline=False)
+    await ctx.send(embed=embed)
     
 ncp_bot.run(os.getenv("DISCORD_TOKEN"))
