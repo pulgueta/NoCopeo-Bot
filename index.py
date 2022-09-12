@@ -18,6 +18,11 @@ async def on_ready():
     print("Bot listo")
 
 @ncp_bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(f"{ctx.author.mention} Comando no encontrado, utiliza ncp>ayuda para ver los comandos disponibles")
+
+@ncp_bot.event
 async def on_message(message):
     if message.author == ncp_bot.user:
         return
