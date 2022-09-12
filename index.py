@@ -14,7 +14,8 @@ ncp_bot = commands.Bot(command_prefix="ncp>", description="Bot oficial de NoCope
 
 @ncp_bot.event
 async def on_ready():
-    await ncp_bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Bombardeo a la casa de Yanfri"))
+    await ncp_bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Bombardeo a la casa de Yanfri"), status=discord.Status.online, afk=False)
+
     print("Bot listo")
 
 @ncp_bot.event
@@ -31,6 +32,10 @@ async def on_message(message):
         await ncp_bot.process_commands(message)
 
 @ncp_bot.command()
+async def care(ctx):
+    await ctx.send("verga")
+
+@ncp_bot.command()
 async def ayuda(ctx):
     embed = discord.Embed(title="Comandos", description="Lista de comandos disponibles", color=discord.Color.yellow())
 
@@ -42,10 +47,6 @@ async def ayuda(ctx):
     embed.set_footer(text="Cualquier duda comunicarse/pingear a pulgueta_#2810")
 
     await ctx.send(embed=embed)
-
-@ncp_bot.command()
-async def care(ctx):
-    await ctx.send("verga")
 
 @ncp_bot.command()
 async def info(ctx):
